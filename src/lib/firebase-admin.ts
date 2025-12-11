@@ -25,8 +25,12 @@ export function getAdminApp(): App {
   // Fall back to env vars
   const key = process.env.FIREBASE_PRIVATE_KEY;
   if (key) {
-    let formatted = key.includes('\\n') ? key.split('\\n').join('\n') : key;
-    if (formatted.startsWith('"')) formatted = formatted.slice(1, -1);
+    let formatted = key;
+    if (formatted.startsWith('"') && formatted.endsWith('"')) {
+      formatted = formatted.slice(1, -1);
+    }
+    // Replace literal \n with actual newlines
+    formatted = formatted.replace(/\\n/g, '\n');
 
     app = initializeApp({
       credential: cert({
