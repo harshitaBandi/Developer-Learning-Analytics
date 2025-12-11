@@ -135,7 +135,7 @@ export function KnowledgeGraph({ className }: { className?: string }) {
       nodes.attr('transform', d => `translate(${d.x},${d.y})`);
     });
 
-    return () => sim.stop();
+    return () => { sim.stop(); };
   }, [dims, graph]);
 
   const zoomIn = () => svgRef.current && zoomRef.current && 
