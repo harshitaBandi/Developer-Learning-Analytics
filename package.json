@@ -1,0 +1,41 @@
+{
+  "name": "vibecoderz-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed:neo4j": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/seed-neo4j.ts",
+    "seed:firestore": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/seed-firestore.ts",
+    "seed:all": "npm run seed:neo4j && npm run seed:firestore"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "d3-force": "^3.0.0",
+    "firebase": "^10.12.2",
+    "firebase-admin": "^12.1.1",
+    "framer-motion": "^11.2.10",
+    "lucide-react": "^0.394.0",
+    "neo4j-driver": "^5.21.0",
+    "next": "14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
