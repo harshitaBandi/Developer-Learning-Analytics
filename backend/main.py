@@ -6,13 +6,11 @@ import os
 import certifi
 from app.routers import knowledge_graph, lvi, lvi_trend, skill_confidence, graph_rag_admin, skill_management
 
-# Load environment variables from project root
 project_root = Path(__file__).parent.parent
-load_dotenv(project_root / '.env.local')  # Try .env.local first
-load_dotenv(project_root / '.env')  # Fall back to .env
-load_dotenv()  # Also load from current directory
+load_dotenv(project_root / '.env.local') 
+load_dotenv(project_root / '.env') 
+load_dotenv() 
 
-# Configure SSL certificates for Neo4j Aura (Python 3.13+ compatibility)
 os.environ['SSL_CERT_FILE'] = certifi.where()
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 
@@ -31,7 +29,6 @@ allowed_origins = [
     "https://developer-learning-analytics-snbb-9juvmwpl.vercel.app",
 ]
 
-# Add env var for additional origins (useful for Railway/production)
 if frontend_url := os.getenv("FRONTEND_URL"):
     allowed_origins.append(frontend_url)
 
@@ -43,7 +40,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(knowledge_graph.router, prefix="/api/knowledge-graph", tags=["knowledge-graph"])
 app.include_router(lvi.router, prefix="/api/lvi", tags=["lvi"])
 app.include_router(lvi_trend.router, prefix="/api/lvi-trend", tags=["lvi-trend"])
